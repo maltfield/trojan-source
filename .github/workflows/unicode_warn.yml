@@ -1,0 +1,22 @@
+name: malicious_sanity_checks
+
+# execute this workflow automatically on all pushes and PRs
+on: [push, pull_request]
+
+jobs:
+
+  unicode_warn:
+
+    runs-on: ubuntu-latest
+    container: debian:bullseye-slim
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    # TODO: test if this works for multiple commits pushed all at-once
+    - name: Check diff for unicode
+      run: |
+        # TODO: actually grep this for unicode
+        git diff HEAD^
+      shell: bash
