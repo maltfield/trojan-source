@@ -26,5 +26,14 @@ jobs:
     - name: Check diff for unicode
       run: |
         # TODO: actually grep this for unicode
+        set -x
         git diff HEAD^
+        echo "================================================================"
+        git rev-parse origin
+        git rev-parse origin/main
+        git rev-parse origin/master
+        git diff-tree -r
+        git diff-tree -r `git rev-parse origin`
+        git diff-tree -r `git rev-parse origin/main`
+        git diff-tree -r `git rev-parse origin/master`
       shell: bash

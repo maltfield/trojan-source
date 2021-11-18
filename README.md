@@ -35,5 +35,4 @@ If you use anything in this repository, in the [*Trojan Source*](https://trojans
 }
 ```
 
-bump-4
-ok, that was a bad example since both commits were in the same file ┬──┬﻿ ¯\_(ツ)
+bump-5
