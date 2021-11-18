@@ -33,10 +33,17 @@ jobs:
         set -x
         diff=`git diff ${{ github.event.before }}`
         echo ${diff} | grep -oP "[^\x00-\x7F]*"
-        if [[ $? ]]; then
+
+        # did we select any unicode characters?
+        if [[ $? -eq 0 ]]; then
+          # we found at least 1 unicode character
           echo "^^ WARNING: Unicode characters found in diff!"
           echo ${diff}
+
         else
+          # we didn't find any unicode characters
           echo "INFO: No unicode characters found in push's commits"
+
         fi
+
       shell: bash
