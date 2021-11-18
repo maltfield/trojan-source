@@ -31,13 +31,13 @@ jobs:
     - name: Check diff for unicode
       run: |
         diff=`git diff ${{ github.event.before }}`
-        echo ${diff} | grep -oP "[^\x00-\x7F]*"
+        echo "${diff}" | grep -oP "[^\x00-\x7F]*"
 
         # did we select any unicode characters?
         if [[ $? -eq 0 ]]; then
           # we found at least 1 unicode character
           echo "^^ WARNING: Unicode characters found in diff!"
-          echo ${diff}
+          echo "${diff}"
 
         else
           # we didn't find any unicode characters
