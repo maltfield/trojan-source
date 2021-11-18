@@ -34,5 +34,8 @@ jobs:
         echo ${diff} | grep -oP "[^\x00-\x7F]*"
         if [[ $? ]]; then
           echo "^^ WARNING: Unicode characters found in diff!"
+          echo ${diff}
+        else
+          echo "INFO: No unicode characters found in push's commits"
         fi
       shell: bash
