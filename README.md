@@ -36,3 +36,4 @@ If you use anything in this repository, in the [*Trojan Source*](https://trojans
 ```
 
 bump-4
+so the real quest is; if this first commit has unicode (╯°□°）╯︵ ┻━┻
