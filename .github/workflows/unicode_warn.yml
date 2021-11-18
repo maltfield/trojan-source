@@ -33,6 +33,7 @@ jobs:
         # TODO: actually grep this for unicode
         set -x
         git diff HEAD^
+        git diff ${{ github.event.before }}
         echo "================================================================"
         git rev-parse origin
         git rev-parse origin/main
