@@ -36,4 +36,3 @@ If you use anything in this repository, in the [*Trojan Source*](https://trojans
 ```
 
 bump-9
-unicode goes here (╯°□°）╯︵ ┻━┻

@@ -30,6 +30,9 @@ jobs:
     # TODO: test if this works for multiple commits pushed all at-once
     - name: Check diff for unicode
       run: |
-        # TODO: actually grep this for unicode
-        git diff ${{ github.event.before }}
+        diff=`git diff ${{ github.event.before }}`
+        echo ${diff} | grep -oP "[^\x00-\x7F]*"
+        if [[ $? ]]; then
+          echo "^^ WARNING: Unicode characters found in diff!"
+        fi
       shell: bash
