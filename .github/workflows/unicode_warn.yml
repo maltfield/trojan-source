@@ -12,7 +12,15 @@ jobs:
 
     steps:
 
-    - uses: actions/checkout@v2
+    - name: Prereqs
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        set -x
+        apt-get update
+        apt-get install -y git
+        git clone "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
+      shell: bash
 
     # TODO: test if this works for multiple commits pushed all at-once
     - name: Check diff for unicode
