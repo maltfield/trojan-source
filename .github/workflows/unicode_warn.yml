@@ -52,6 +52,8 @@ jobs:
 
         fi
 
+      shell: bash
+
       # leave a comment on the PR. See also
       #  * https://stackoverflow.com/a/64126737
 #      - uses: actions/github-script@v5
@@ -67,4 +69,3 @@ jobs:
 #              body: 'test comment from GitHubActions'
 #            })
 #
-#      shell: bash
