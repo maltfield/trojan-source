@@ -52,7 +52,7 @@ jobs:
 
         fi
 
-      shell: bash
+      shell: bash {0}
 
     # leave a comment on the PR. See also
     #  * https://stackoverflow.com/a/64126737
