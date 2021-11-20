@@ -43,7 +43,7 @@ jobs:
         # did we select any unicode characters?
         if [[ "${unicode_diff_hexdump}" == "" ]]; then
           # we didn't find any unicode characters
-          human_result="INFO: No unicode characters found in push's commits"
+          human_result="INFO: No unicode characters found in PR's commits"
           echo "${human_result}"
 
         else
@@ -72,5 +72,5 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: '${{ env.UNICODE_HUMAN_RESULT }}'
+            body: "${{ env.UNICODE_HUMAN_RESULT }}"
           })
