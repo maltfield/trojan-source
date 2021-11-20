@@ -43,12 +43,12 @@ jobs:
         # did we select any unicode characters?
         if [[ "${unicode_diff_hexdump}" == "" ]]; then
           # we didn't find any unicode characters
-          human_result='INFO: No unicode characters found in push's commits'
+          human_result="INFO: No unicode characters found in push's commits"
           echo "${human_result}"
 
         else
           # we found at least 1 unicode character
-          human_result='^^ WARNING: Unicode characters found in diff!'
+          human_result="^^ WARNING: Unicode characters found in diff!"
           echo "${human_result}"
           echo "${diff}"
 
