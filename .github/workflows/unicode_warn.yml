@@ -36,7 +36,7 @@ jobs:
         unicode_diff=`echo "${diff}" | grep -oP "[^\x00-\x7F]*"`
         echo "${unicode_diff}"
 
-        unicode_diff_hexdump=`echo "${unicode_diff}" | hexdump -C`
+        unicode_diff_hexdump=`echo "${unicode_diff}" | hd`
         echo "${unicode_diff_hexdump}"
 
         # did we select any unicode characters?
