@@ -35,5 +35,4 @@ If you use anything in this repository, in the [*Trojan Source*](https://trojans
 }
 ```
 
-bump-10
-adding unicode (╯°□°）╯︵ ┻━┻
+bump-1
