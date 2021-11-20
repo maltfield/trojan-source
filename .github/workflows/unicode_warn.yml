@@ -41,14 +41,14 @@ jobs:
         echo "${unicode_diff_hexdump}"
 
         # did we select any unicode characters?
-        if [ ${unicode_grep_exit_code} -eq 0 ]; then
+        if [[ "${unicode_diff_hexdump}" == "" ]]; then
+          # we didn't find any unicode characters
+          echo "INFO: No unicode characters found in push's commits"
+
+        else
           # we found at least 1 unicode character
           echo "^^ WARNING: Unicode characters found in diff!"
           echo "${diff}"
-
-        else
-          # we didn't find any unicode characters
-          echo "INFO: No unicode characters found in push's commits"
 
         fi
 
