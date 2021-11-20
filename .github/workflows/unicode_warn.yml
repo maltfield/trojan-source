@@ -43,14 +43,18 @@ jobs:
         # did we select any unicode characters?
         if [[ "${unicode_diff_hexdump}" == "" ]]; then
           # we didn't find any unicode characters
-          echo "INFO: No unicode characters found in push's commits"
+          human_result='INFO: No unicode characters found in push's commits'
+          echo "${human_result}"
 
         else
           # we found at least 1 unicode character
-          echo "^^ WARNING: Unicode characters found in diff!"
+          human_result='^^ WARNING: Unicode characters found in diff!'
+          echo "${human_result}"
           echo "${diff}"
 
         fi
+
+        echo "UNICODE_HUMAN_RESULT=${human_result}" >> $GITHUB_ENV
 
       shell: bash {0}
 
@@ -68,5 +72,5 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: 'test comment from GitHubActions'
+            body: '${{ env.UNICODE_HUMAN_RESULT }}'
           })
