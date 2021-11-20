@@ -34,13 +34,14 @@ jobs:
         #set -x
         diff=`git diff --unified=0 ${{ github.event.before }} | grep -E "^[+]" | grep -Ev '^(--- a/|\+\+\+ b/)'`
         unicode_diff=`echo "${diff}" | grep -oP "[^\x00-\x7F]*"`
+        unicode_grep_exit_code=$?
         echo "${unicode_diff}"
 
         unicode_diff_hexdump=`echo "${unicode_diff}" | hd`
         echo "${unicode_diff_hexdump}"
 
         # did we select any unicode characters?
-        if [ $? -eq 0 ]; then
+        if [ ${unicode_grep_exit_code} -eq 0 ]; then
           # we found at least 1 unicode character
           echo "^^ WARNING: Unicode characters found in diff!"
           echo "${diff}"
