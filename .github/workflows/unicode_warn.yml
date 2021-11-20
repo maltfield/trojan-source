@@ -54,18 +54,18 @@ jobs:
 
       shell: bash
 
-      # leave a comment on the PR. See also
-      #  * https://stackoverflow.com/a/64126737
-      - uses: actions/github-script@v5
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              # TODO: add ${{ steps.unicode_diff.outputs.human_result }} to the comment
-              # TODO: make sure this doesn't open command injection risks
-              #  * https://github.com/victoriadrake/github-guestbook/issues/1#issuecomment-657121754
-              body: 'test comment from GitHubActions'
-            })
-
+    # leave a comment on the PR. See also
+    #  * https://stackoverflow.com/a/64126737
+    - name: Leave comment on PR
+      uses: actions/github-script@v5
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            # TODO: add ${{ steps.unicode_diff.outputs.human_result }} to the comment
+            # TODO: make sure this doesn't open command injection risks
+            #  * https://github.com/victoriadrake/github-guestbook/issues/1#issuecomment-657121754
+            body: 'test comment from GitHubActions'
+          })
