@@ -1,8 +1,15 @@
+################################################################################
+# File:    .github/workflows/unicode_warn.yml
+# Version: 0.1
+# Purpose: Detects Unicode in PRs and comments the results of findings in PR
+# Authors: Michael Altfield <michael@michaelaltfield.net>
+# Created: 2021-11-20
+# Updated: 2021-11-20
+################################################################################
 name: malicious_sanity_checks
 
-# execute this workflow automatically on all pushes and PRs
+# execute this workflow automatically on all PRs
 on: [pull_request]
-#on: [push, pull_request]
 
 jobs:
 
@@ -27,7 +34,6 @@ jobs:
         git clone "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
       shell: bash
 
-    # TODO: test if this works for multiple commits pushed all at-once
     - name: Check diff for unicode
       id: unicode_diff
       run: |
@@ -60,8 +66,7 @@ jobs:
 
     # leave a comment on the PR. See also
     #  * https://stackoverflow.com/a/64126737
-    # TODO: add ${{ steps.unicode_diff.outputs.human_result }} to the comment
-    # TODO: make sure this doesn't open command injection risks
+    # make sure this doesn't open command injection risks
     #  * https://github.com/victoriadrake/github-guestbook/issues/1#issuecomment-657121754
     - name: Leave comment on PR
       uses: actions/github-script@v5
