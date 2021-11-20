@@ -1,8 +1,8 @@
 name: malicious_sanity_checks
 
 # execute this workflow automatically on all pushes and PRs
-#on: [pull_request]
-on: [push, pull_request]
+on: [pull_request]
+#on: [push, pull_request]
 
 jobs:
 
@@ -32,7 +32,7 @@ jobs:
       id: unicode_diff
       run: |
         #set -x
-        diff=`git diff --unified=0 ${{ github.event.before }} | grep -E "^[+]" | grep -Ev '^(--- a/|\+\+\+ b/)'`
+        diff=`git diff --unified=0 ${{ github.event.pull_request.base.sha }} | grep -E "^[+]" | grep -Ev '^(--- a/|\+\+\+ b/)'`
         unicode_diff=`echo "${diff}" | grep -oP "[^\x00-\x7F]*"`
         unicode_grep_exit_code=$?
         echo "${unicode_diff}"
@@ -56,16 +56,16 @@ jobs:
 
       # leave a comment on the PR. See also
       #  * https://stackoverflow.com/a/64126737
-#      - uses: actions/github-script@v5
-#        with:
-#          script: |
-#            github.rest.issues.createComment({
-#              issue_number: context.issue.number,
-#              owner: context.repo.owner,
-#              repo: context.repo.repo,
-#              # TODO: add ${{ steps.unicode_diff.outputs.human_result }} to the comment
-#              # TODO: make sure this doesn't open command injection risks
-#              #  * https://github.com/victoriadrake/github-guestbook/issues/1#issuecomment-657121754
-#              body: 'test comment from GitHubActions'
-#            })
-#
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              # TODO: add ${{ steps.unicode_diff.outputs.human_result }} to the comment
+              # TODO: make sure this doesn't open command injection risks
+              #  * https://github.com/victoriadrake/github-guestbook/issues/1#issuecomment-657121754
+              body: 'test comment from GitHubActions'
+            })
+
