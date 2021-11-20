@@ -40,7 +40,7 @@ jobs:
         echo "${unicode_diff_hexdump}"
 
         # did we select any unicode characters?
-        if [[ $? -eq 0 ]]; then
+        if [ $? -eq 0 ]; then
           # we found at least 1 unicode character
           echo "^^ WARNING: Unicode characters found in diff!"
           echo "${diff}"
