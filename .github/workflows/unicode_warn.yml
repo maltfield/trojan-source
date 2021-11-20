@@ -62,6 +62,8 @@ jobs:
 #              owner: context.repo.owner,
 #              repo: context.repo.repo,
 #              # TODO: add ${{ steps.unicode_diff.outputs.human_result }} to the comment
+#              # TODO: make sure this doesn't open command injection risks
+#              #  * https://github.com/victoriadrake/github-guestbook/issues/1#issuecomment-657121754
 #              body: 'test comment from GitHubActions'
 #            })
 #
