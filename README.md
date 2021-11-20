@@ -37,3 +37,4 @@ If you use anything in this repository, in the [*Trojan Source*](https://trojans
 
 bump-9
 adding unicode ಠ_ಠ
+adding unicode (╯°□°）╯︵ ┻━┻
